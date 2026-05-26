@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-primary: #0F766E;
+    --color-brand-primary-rgb: 15, 118, 110;
+    --color-brand-dark: #115E59;
+    --color-brand-strong: #0D9488;
+    --color-accent-cyan: #06B6D4;
+    --color-accent-green: #10B981;
+
+    --color-surface-app: #F8FFFD;
+    --color-surface-sidebar: #ECFDF5;
+    --color-surface-chat: #FAFFFE;
+    --color-surface-card: #FFFFFF;
+    --color-surface-hover: #F0FDFA;
+    --color-surface-active: #CCFBF1;
+    --color-surface-selected: #E6FFFA;
+
+    --color-ink-main: #0F172A;
+    --color-ink-secondary: #64748B;
+    --color-ink-muted: #94A3B8;
+    --color-ink-inverse: #FFFFFF;
+
+    --color-line-main: #D1FAE5;
+    --color-line-light: #E2E8F0;
+    --color-line-input: #CBD5E1;
+    --color-line-divider: #E5E7EB;
+    --color-line-active: #14B8A6;
+    --color-line-bubble: #99F6E4;
+
+    --shadow-teal-soft: 0 8px 24px rgba(var(--color-brand-primary-rgb), 0.10);
+    --gradient-teal-cyan: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-accent-cyan) 100%);
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-surface-app text-ink-main antialiased m-0;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  #root {
+    @apply min-h-screen;
+  }
+  .brand-logo {
+    display: block;
+    height: auto;
+    max-width: none;
+  }
+  .brand-logo-sidebar {
+    width: 120px;
+    transform: translateY(3px);
+  }
+  .brand-logo-mobile {
+    width: 96px;
+    transform: translateY(2px);
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
