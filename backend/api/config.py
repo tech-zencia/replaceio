@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     tavily_api_key: str | None = None
     environment: str = "development"
     frontend_url: str = "http://localhost:5173"
+    cors_origins: str = "https://www.replaceio.com,https://replaceio.com"
 
     class Config:
         env_file = ".env"

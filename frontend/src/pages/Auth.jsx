@@ -40,17 +40,20 @@ const featureCards = [
   },
 ];
 
-function SplitBrandMark() {
+function AuthBrandMark() {
   return (
-    <div className="absolute left-[49.5%] top-10 z-30 hidden items-center gap-0 lg:flex">
-      <img
-        src={logoSrc}
-        alt="Replaceio"
-        className="-ml-28 h-36 w-36 object-contain drop-shadow-sm"
-      />
-      <span className="-ml-6 whitespace-nowrap text-4xl font-extrabold tracking-tight text-teal-700">
-        Replaceio
-      </span>
+    <div className="mb-12 flex justify-center">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <img
+          src={logoSrc}
+          alt=""
+          className="h-16 w-16 object-contain drop-shadow-sm sm:h-20 sm:w-20"
+          aria-hidden="true"
+        />
+        <span className="whitespace-nowrap text-4xl font-extrabold tracking-tight text-teal-700 sm:text-5xl">
+          Replaceio
+        </span>
+      </div>
     </div>
   );
 }
@@ -140,8 +143,6 @@ export default function Auth({ initialMode = "login" }) {
   return (
     <div className="min-h-screen bg-slate-50 p-4 text-slate-900 sm:p-7">
       <div className="relative mx-auto flex min-h-[calc(100vh-2rem)] max-w-[1840px] overflow-hidden rounded-[28px] bg-white shadow-[0_28px_80px_rgba(15,23,42,0.10)] sm:min-h-[calc(100vh-3.5rem)]">
-        <SplitBrandMark />
-
         <aside className="relative hidden w-[49.5%] overflow-hidden bg-[#063b4e] px-14 py-14 text-white lg:flex lg:flex-col">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_93%_38%,rgba(20,184,166,0.34),transparent_33%),linear-gradient(145deg,#07384e_0%,#07445b_42%,#0c766f_100%)]" />
           <div className="absolute -right-36 top-16 h-[720px] w-[720px] rounded-full bg-white/5" />
@@ -190,23 +191,26 @@ export default function Auth({ initialMode = "login" }) {
           </p>
         </aside>
 
-        <main className="relative flex flex-1 items-center justify-center overflow-hidden bg-gradient-to-br from-white via-white to-teal-50 px-5 py-10 sm:px-8">
+        <main className="relative flex flex-1 items-center justify-center overflow-x-hidden overflow-y-auto bg-gradient-to-br from-white via-white to-teal-50 px-4 py-8 sm:px-8 lg:px-10">
           <div className="absolute right-0 top-0 h-60 w-60 rounded-full bg-teal-100/50 blur-3xl" />
           <div className="absolute bottom-0 left-12 h-56 w-56 rounded-full bg-cyan-100/45 blur-3xl" />
 
-          <div className="relative z-10 w-full max-w-[500px]">
-            <div className="mb-8 text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                {mode === "login" ? "Welcome back" : "Create account"}
-              </h2>
-              <p className="mt-3 text-base text-slate-500">
-                {mode === "login"
-                  ? "Sign in to your Replaceio account"
-                  : "Join Replaceio - it's free"}
-              </p>
-            </div>
+          <div className="relative z-10 flex w-full max-w-[760px] justify-center px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+            <div className="w-full max-w-[560px]">
+              <AuthBrandMark />
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="mb-9 text-center">
+                <h2 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+                  {mode === "login" ? "Welcome back" : "Create account"}
+                </h2>
+                <p className="mt-4 text-lg text-slate-500">
+                  {mode === "login"
+                    ? "Sign in to your Replaceio account"
+                    : "Join Replaceio - it's free"}
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
               {mode === "register" && (
                 <>
                   <Field icon={User} label="Full Name">
@@ -311,15 +315,15 @@ export default function Auth({ initialMode = "login" }) {
                   </>
                 )}
               </button>
-            </form>
+              </form>
 
-            <div className="my-8 flex items-center gap-6 text-sm font-medium text-slate-500">
-              <span className="h-px flex-1 bg-slate-200" />
-              <span>or</span>
-              <span className="h-px flex-1 bg-slate-200" />
-            </div>
+              <div className="my-8 flex items-center gap-6 text-sm font-medium text-slate-500">
+                <span className="h-px flex-1 bg-slate-200" />
+                <span>or</span>
+                <span className="h-px flex-1 bg-slate-200" />
+              </div>
 
-            <p className="text-center text-sm text-slate-500">
+              <p className="text-center text-sm text-slate-500">
               {mode === "login" ? (
                 <>
                   Don&apos;t have an account?{" "}
@@ -343,7 +347,12 @@ export default function Auth({ initialMode = "login" }) {
                   </button>
                 </>
               )}
-            </p>
+              </p>
+
+              <p className="mt-9 text-center text-xs font-semibold uppercase tracking-[0.34em] text-slate-400">
+                Powered by <span className="text-teal-700">Zencia</span>
+              </p>
+            </div>
           </div>
         </main>
       </div>

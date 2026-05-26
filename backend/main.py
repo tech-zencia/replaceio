@@ -13,12 +13,24 @@ app = FastAPI(
     version="1.0.0",
 )
 
+
+def parse_cors_origins(*values: str) -> list[str]:
+    origins: list[str] = []
+    for value in values:
+        for origin in (value or "").split(","):
+            origin = origin.strip().rstrip("/")
+            if origin and origin not in origins:
+                origins.append(origin)
+    return origins
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
+    allow_origins=parse_cors_origins(
         "http://localhost:5173",
         settings.frontend_url,
-    ],
+        settings.cors_origins,
+    ),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
