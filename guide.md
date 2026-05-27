@@ -3,7 +3,7 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 | Phase | What You Build | Duration |
 |---|---|---|
